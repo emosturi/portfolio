@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import AnimatedLetters from '../animated-letters/animated-letters.component'
 import Logo from './logo/logo.component'
+import { useRef } from 'react'
 
 const Home = () => {
+ const mountFlag = useRef(false)
  const [letterClass, setLetterClass] = useState('text-animate')
  const webDeveloper = [
   'W',
@@ -26,9 +28,12 @@ const Home = () => {
  const ick = ['i', 'c', 'k']
 
  useEffect(() => {
-  setTimeout(() => {
-   setLetterClass('text-animate-hover')
-  }, 4000)
+  if (!mountFlag.current) {
+   mountFlag.current = true
+   setTimeout(() => {
+    setLetterClass('text-animate-hover')
+   }, 4000)
+  }
  }, [])
 
  return (

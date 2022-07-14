@@ -11,30 +11,29 @@ const Logo = () => {
  const mountFlag = useRef(false)
 
  useEffect(() => {
-  if (!mountFlag.current) {
-   gsap.registerPlugin(DrawSVGPlugin)
+  if (mountFlag.current) return
+  gsap.registerPlugin(DrawSVGPlugin)
 
-   gsap
-    .timeline()
-    .to(bgRef.current, { duration: 1, opacity: 1 })
-    .from(outlineLogoRef.current, {
-     drawSVG: '50% 50%',
-     duration: 7,
-    })
+  gsap
+   .timeline()
+   .to(bgRef.current, { duration: 1, opacity: 1 })
+   .from(outlineLogoRef.current, {
+    drawSVG: '50% 50%',
+    duration: 7,
+   })
 
-   gsap.fromTo(
-    solidlogoRef.current,
-    {
-     opacity: 0,
-    },
-    {
-     opacity: 1,
-     duration: 4,
-     delay: 4,
-    }
-   )
-   mountFlag.current = true
-  }
+  gsap.fromTo(
+   solidlogoRef.current,
+   {
+    opacity: 0,
+   },
+   {
+    opacity: 1,
+    duration: 4,
+    delay: 4,
+   }
+  )
+  mountFlag.current = true
  })
 
  return (
