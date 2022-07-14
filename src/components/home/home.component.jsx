@@ -3,6 +3,7 @@ import logoN from '../../assets/img/logoN.png'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import AnimatedLetters from '../animated-letters/animated-letters.component'
+import Logo from './logo/logo.component'
 
 const Home = () => {
  const [letterClass, setLetterClass] = useState('text-animate')
@@ -50,11 +51,12 @@ const Home = () => {
       idx={26}
      />
     </h1>
-    <h2>Frontend Developer & Part-Time Yoghurt-Ice-cream Sommelier</h2>
+    <h2>Frontend Developer & Part-Time Fro-Yo Sommelier</h2>
     <Link className="flat-button" to="/contact">
      EMAIL ME
     </Link>
    </div>
+   <Logo />
   </div>
  )
 }
