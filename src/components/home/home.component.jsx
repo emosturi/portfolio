@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import AnimatedLetters from '../animated-letters/animated-letters.component'
 import Logo from './logo/logo.component'
 import { useRef } from 'react'
+import Loader from 'react-loaders'
 
 const Home = () => {
  const mountFlag = useRef(false)
@@ -37,32 +38,35 @@ const Home = () => {
  }, [])
 
  return (
-  <div className="container home-page">
-   <div className="text-zone">
-    <h1>
-     <span className="text-animate">H</span>
-     <span className="text-animate _12">i,</span> <br />
-     <AnimatedLetters
-      letterClass={letterClass}
-      letterArray={iAmJust}
-      idx={13}
-     />
-     <img src={logoN} alt="web developer" />
-     <AnimatedLetters letterClass={letterClass} letterArray={ick} idx={23} />
-     <br />
-     <AnimatedLetters
-      letterClass={letterClass}
-      letterArray={webDeveloper}
-      idx={26}
-     />
-    </h1>
-    <h2>Frontend Developer & Part-Time Fro-Yo Sommelier</h2>
-    <Link className="flat-button" to="/contact">
-     EMAIL ME
-    </Link>
+  <>
+   <div className="container home-page">
+    <div className="text-zone">
+     <h1>
+      <span className="text-animate">H</span>
+      <span className="text-animate _12">i,</span> <br />
+      <AnimatedLetters
+       letterClass={letterClass}
+       letterArray={iAmJust}
+       idx={13}
+      />
+      <img src={logoN} alt="web developer" />
+      <AnimatedLetters letterClass={letterClass} letterArray={ick} idx={23} />
+      <br />
+      <AnimatedLetters
+       letterClass={letterClass}
+       letterArray={webDeveloper}
+       idx={26}
+      />
+     </h1>
+     <h2>Frontend Developer & Part-Time Fro-Yo Sommelier</h2>
+     <Link className="flat-button" to="/contact">
+      EMAIL ME
+     </Link>
+    </div>
+    <Logo />
    </div>
-   <Logo />
-  </div>
+   <Loader type="line-scale-pulse-out-rapid" />
+  </>
  )
 }
 
