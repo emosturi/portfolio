@@ -1,0 +1,62 @@
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useRef } from 'react'
+import Loader from 'react-loaders'
+import AnimatedLetters from '../animated-letters/animated-letters.component'
+import './contact.styles.scss'
+
+const ContactForm = () => {
+ const [letterClass, setLetterClass] = useState('text-animate')
+ const mountFlag = useRef(false)
+ useEffect(() => {
+  if (!mountFlag.current) {
+   mountFlag.current = true
+   setTimeout(() => {
+    setLetterClass('text-animate-hover')
+   }, 3000)
+  }
+ }, [])
+ return (
+  <>
+   <div className="container contact-page">
+    <div className="text-zone">
+     <h1>
+      <AnimatedLetters
+       letterArray={['C', 'o', 'n', 't', 'a', 'c', 't', ' ', 'm', 'e']}
+       idx={15}
+       letterClass={letterClass}
+      />
+     </h1>
+     <p>
+      Do you feel like doing something special on your next Frontend Project...?
+      Reach me I would love to contribute!
+     </p>
+     <div className="contact-form">
+      <form action="">
+       <ul>
+        <li className="half">
+         <input type="text" name="name" placeholder="Name" required />
+        </li>
+        <li className="half">
+         <input type="email" name="email" placeholder="Email" required />
+        </li>
+        <li>
+         <input type="text" name="subject" placeholder="Subject" required />
+        </li>
+        <li>
+         <textarea name="message" placeholder="Message" required />
+        </li>
+        <li>
+         <input type="submit" className="flat-button" value="SEND" />
+        </li>
+       </ul>
+      </form>
+     </div>
+    </div>
+   </div>
+   <Loader type="line-scale-pulse-out-rapid" />
+  </>
+ )
+}
+
+export default ContactForm
