@@ -72,3 +72,41 @@
   }
  }
 }
+
+.info-map {
+ position: absolute;
+ background-color: #000;
+ top: 370px;
+ right: 30%;
+ z-index: 1;
+ width: 237px;
+ padding: 20px;
+ color: whitesmoke;
+ font-family: 'Coolvetica';
+ font-size: 17px;
+ font-weight: 500;
+ opacity: 0;
+ animation: fadeIn 1s 1.5s forwards;
+
+ span {
+  color: #ff0066;
+  display: block;
+  font-size: 16px;
+  font-weight: 100;
+  padding-top: 10px;
+ }
+}
+
+.map-wrap {
+ float: right;
+ width: 53%;
+ height: 100%;
+}
+
+.leaflet-container {
+ width: 100%;
+ height: 100%;
+ position: relative;
+ opacity: 0;
+ animation: backInRight 1.2s 1.5s forwards;
+}

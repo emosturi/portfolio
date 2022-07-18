@@ -1,12 +1,12 @@
 import emailjs from '@emailjs/browser'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import Loader from 'react-loaders'
 import AnimatedLetters from '../animated-letters/animated-letters.component'
 import './contact.styles.scss'
 
 const ContactForm = () => {
+ const position = [-32.92941, -71.52673]
  const [letterClass, setLetterClass] = useState('text-animate')
  const mountFlag = useRef(false)
  const formRef = useRef()
@@ -76,6 +76,29 @@ const ContactForm = () => {
        </ul>
       </form>
      </div>
+    </div>
+    <div className="info-map">
+     JUSTNICK - Headquarters
+     <br />
+     Chile,
+     <br />
+     Los Pinos 610, los Romeros <br />
+     Concón <br />
+     <span>nicsalb@gmail.com</span>
+    </div>
+    <div className="map-wrap">
+     <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+      <TileLayer
+       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={position}>
+       <Popup>
+        Here is where your app becomes real... <br /> ...Or where you can
+        deliver your Fro-Yo.
+       </Popup>
+      </Marker>
+     </MapContainer>
     </div>
    </div>
    <Loader type="line-scale-pulse-out-rapid" />
