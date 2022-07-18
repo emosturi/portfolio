@@ -1,3 +1,4 @@
+import emailjs from '@emailjs/browser'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
@@ -8,6 +9,8 @@ import './contact.styles.scss'
 const ContactForm = () => {
  const [letterClass, setLetterClass] = useState('text-animate')
  const mountFlag = useRef(false)
+ const formRef = useRef()
+
  useEffect(() => {
   if (!mountFlag.current) {
    mountFlag.current = true
@@ -16,6 +19,27 @@ const ContactForm = () => {
    }, 3000)
   }
  }, [])
+
+ const handleSubmit = (e) => {
+  e.preventDefault()
+  emailjs
+   .sendForm(
+    'portfolio',
+    'template_gjlt22t',
+    formRef.current,
+    'acHZuwPan8mOcrpx9'
+   )
+   .then(
+    () => {
+     alert('Message sent successfully!')
+     window.location.reload(false)
+    },
+    () => {
+     alert('Failed to send the message, please try again')
+    }
+   )
+ }
+
  return (
   <>
    <div className="container contact-page">
@@ -32,7 +56,7 @@ const ContactForm = () => {
       Reach me I would love to contribute!
      </p>
      <div className="contact-form">
-      <form action="">
+      <form ref={formRef} onSubmit={handleSubmit} action="">
        <ul>
         <li className="half">
          <input type="text" name="name" placeholder="Name" required />
@@ -44,7 +68,7 @@ const ContactForm = () => {
          <input type="text" name="subject" placeholder="Subject" required />
         </li>
         <li>
-         <textarea name="message" placeholder="Message" required />
+         <textarea name="messagee" placeholder="Message" required />
         </li>
         <li>
          <input type="submit" className="flat-button" value="SEND" />
