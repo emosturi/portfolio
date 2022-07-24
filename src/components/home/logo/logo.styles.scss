@@ -8,7 +8,7 @@
  bottom: 0;
  left: auto;
  margin: auto;
- opacity: 0;
+ opacity: 1;
 
  svg {
   width: 100%;
@@ -27,10 +27,23 @@
   width: 100%;
   transform: rotateZ(30deg);
   z-index: 1;
+  animation: fadeIn 2s 6s backwards;
  }
 }
 
 .svg-container {
  stroke: #48e3ff;
  stroke-width: 5;
+
+ path {
+  stroke-dasharray: 19963;
+  stroke-dashoffset: 19963;
+  animation: drawContourLogo 6s linear forwards;
+ }
+}
+
+@keyframes drawContourLogo {
+ 100% {
+  stroke-dashoffset: 0;
+ }
 }
